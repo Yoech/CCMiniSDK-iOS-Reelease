@@ -6,6 +6,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+//#import <UserNotifications/UserNotifications.h>
+//#import <AuthenticationServices/AuthenticationServices.h>
 #import <CCMiniSDK/CCMiniSDKBridge.h>
 
 //! Project version number for CCMiniSDK.

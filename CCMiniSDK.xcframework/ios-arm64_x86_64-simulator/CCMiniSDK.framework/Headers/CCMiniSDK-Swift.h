@@ -281,14 +281,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
-@import AnyThinkSDK;
-@import AuthenticationServices;
-@import FirebaseMessaging;
 @import Foundation;
-@import GameKit;
 @import ObjectiveC;
-@import StoreKit;
-@import UserNotifications;
 #endif
 
 #endif
@@ -311,95 +305,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
-/// Apple 认证管理类
-SWIFT_CLASS("_TtC9CCMiniSDK11CCAppleAuth")
-@interface CCAppleAuth : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class ASAuthorizationController;
-@interface CCAppleAuth (SWIFT_EXTENSION(CCMiniSDK)) <ASAuthorizationControllerPresentationContextProviding>
-- (ASPresentationAnchor _Nonnull)presentationAnchorForAuthorizationController:(ASAuthorizationController * _Nonnull)controller SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class ASAuthorization;
-@interface CCAppleAuth (SWIFT_EXTENSION(CCMiniSDK)) <ASAuthorizationControllerDelegate>
-- (void)authorizationController:(ASAuthorizationController * _Nonnull)controller didCompleteWithAuthorization:(ASAuthorization * _Nonnull)authorization;
-- (void)authorizationController:(ASAuthorizationController * _Nonnull)controller didCompleteWithError:(NSError * _Nonnull)error;
-@end
-
-SWIFT_CLASS("_TtC9CCMiniSDK29CCFirebaseAuthWithAppleSignIn") SWIFT_AVAILABILITY(ios,introduced=13.0)
-@interface CCFirebaseAuthWithAppleSignIn : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-SWIFT_CLASS("_TtC9CCMiniSDK28CCFirebaseAuthWithGameCenter")
-@interface CCFirebaseAuthWithGameCenter : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-SWIFT_CLASS("_TtC9CCMiniSDK30CCFirebaseAuthWithGoogleSignIn")
-@interface CCFirebaseAuthWithGoogleSignIn : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-/// Firebase Messaging 管理类
-SWIFT_CLASS("_TtC9CCMiniSDK19CCFirebaseMessaging")
-@interface CCFirebaseMessaging : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class FIRMessaging;
 @class NSString;
-@interface CCFirebaseMessaging (SWIFT_EXTENSION(CCMiniSDK)) <FIRMessagingDelegate>
-- (void)messaging:(FIRMessaging * _Nonnull)messaging didReceiveRegistrationToken:(NSString * _Nullable)fcmToken;
-@end
-
-@class UNUserNotificationCenter;
-@class UNNotification;
-@class UNNotificationResponse;
-@interface CCFirebaseMessaging (SWIFT_EXTENSION(CCMiniSDK)) <UNUserNotificationCenterDelegate>
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
-@end
-
-/// Game Center 管理类
-SWIFT_CLASS("_TtC9CCMiniSDK12CCGameCenter")
-@interface CCGameCenter : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class GKGameCenterViewController;
-@interface CCGameCenter (SWIFT_EXTENSION(CCMiniSDK)) <GKGameCenterControllerDelegate>
-- (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController * _Nonnull)gameCenterViewController;
-@end
-
-/// 应用内购买管理类
-SWIFT_CLASS("_TtC9CCMiniSDK15CCInAppPurchase")
-@interface CCInAppPurchase : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class SKProductsRequest;
-@class SKProductsResponse;
-@class SKRequest;
-@interface CCInAppPurchase (SWIFT_EXTENSION(CCMiniSDK)) <SKProductsRequestDelegate>
-- (void)productsRequest:(SKProductsRequest * _Nonnull)request didReceiveResponse:(SKProductsResponse * _Nonnull)response;
-- (void)request:(SKRequest * _Nonnull)request didFailWithError:(NSError * _Nonnull)error;
-@end
-
-@class SKPaymentQueue;
-@class SKPaymentTransaction;
-@interface CCInAppPurchase (SWIFT_EXTENSION(CCMiniSDK)) <SKPaymentTransactionObserver>
-- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue updatedTransactions:(NSArray<SKPaymentTransaction *> * _Nonnull)transactions;
-- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue * _Nonnull)queue;
-- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue restoreCompletedTransactionsFailedWithError:(NSError * _Nonnull)error;
-@end
-
 @class NSDictionary;
 SWIFT_CLASS_NAMED("CCMiniSDKHelper")
 @interface CCMiniSDKHelper : NSObject
@@ -425,75 +331,6 @@ SWIFT_CLASS_NAMED("CCMiniSDKHelper")
 + (void)signOutProviderAsync:(NSString * _Nonnull)providerRaw callbackId:(NSString * _Nonnull)callbackId;
 + (void)linkProviderAsync:(NSString * _Nonnull)providerRaw callbackId:(NSString * _Nonnull)callbackId;
 + (void)unlinkProviderAsync:(NSString * _Nonnull)providerRaw callbackId:(NSString * _Nonnull)callbackId;
-@end
-
-/// 推送通知管理类
-SWIFT_CLASS("_TtC9CCMiniSDK19CCPushNotifications")
-@interface CCPushNotifications : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@interface CCPushNotifications (SWIFT_EXTENSION(CCMiniSDK)) <UNUserNotificationCenterDelegate>
-/// 应用在前台时收到通知
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
-/// 用户点击通知
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
-@end
-
-/// TopOn 广告模块
-/// 支持横幅、插屏、激励视频、原生广告等多种广告形式
-SWIFT_CLASS("_TtC9CCMiniSDK10CCTopOnAds")
-@interface CCTopOnAds : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class ATBannerView;
-@interface CCTopOnAds (SWIFT_EXTENSION(CCMiniSDK)) <ATBannerDelegate>
-/// 横幅广告展示
-- (void)bannerView:(ATBannerView * _Nonnull)bannerView didShowAdWithPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 横幅广告点击
-- (void)bannerView:(ATBannerView * _Nonnull)bannerView didClickWithPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-@end
-
-@interface CCTopOnAds (SWIFT_EXTENSION(CCMiniSDK)) <ATInterstitialDelegate>
-/// 插屏广告展示
-- (void)interstitialDidShowForPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 插屏广告点击
-- (void)interstitialDidClickForPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 插屏广告关闭
-- (void)interstitialDidCloseForPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 插屏广告展示失败
-- (void)interstitialFailedToShowForPlacementID:(NSString * _Nonnull)placementID error:(NSError * _Nonnull)error extra:(NSDictionary * _Nullable)extra;
-@end
-
-@interface CCTopOnAds (SWIFT_EXTENSION(CCMiniSDK)) <ATRewardedVideoDelegate>
-/// 激励视频开始播放
-- (void)rewardedVideoDidStartPlayingForPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 激励视频播放结束
-- (void)rewardedVideoDidEndPlayingForPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 激励视频播放完成并获得奖励
-- (void)rewardedVideoDidRewardSuccessForPlacemenID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 激励视频关闭
-- (void)rewardedVideoDidCloseForPlacementID:(NSString * _Nonnull)placementID rewarded:(BOOL)rewarded extra:(NSDictionary * _Nullable)extra;
-/// 激励视频点击
-- (void)rewardedVideoDidClickForPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 激励视频展示失败
-- (void)rewardedVideoDidFailToPlayForPlacementID:(NSString * _Nonnull)placementID error:(NSError * _Nonnull)error extra:(NSDictionary * _Nullable)extra;
-@end
-
-@interface CCTopOnAds (SWIFT_EXTENSION(CCMiniSDK)) <ATAdLoadingDelegate>
-/// 广告加载成功
-- (void)didFinishLoadingADWithPlacementID:(NSString * _Nonnull)placementID;
-/// 广告加载失败
-- (void)didFailToLoadADWithPlacementID:(NSString * _Nonnull)placementID error:(NSError * _Nonnull)error;
-- (void)didRevenueForPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra;
-- (void)didStartLoadingADSourceWithPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra;
-- (void)didFinishLoadingADSourceWithPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra;
-- (void)didFailToLoadADSourceWithPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra error:(NSError * _Nullable)error;
-- (void)didStartBiddingADSourceWithPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra;
-- (void)didFinishBiddingADSourceWithPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra;
-- (void)didFailBiddingADSourceWithPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra error:(NSError * _Nullable)error;
 @end
 
 #endif
@@ -787,14 +624,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #if __has_warning("-Watimport-in-framework-header")
 #pragma clang diagnostic ignored "-Watimport-in-framework-header"
 #endif
-@import AnyThinkSDK;
-@import AuthenticationServices;
-@import FirebaseMessaging;
 @import Foundation;
-@import GameKit;
 @import ObjectiveC;
-@import StoreKit;
-@import UserNotifications;
 #endif
 
 #endif
@@ -817,95 +648,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
-/// Apple 认证管理类
-SWIFT_CLASS("_TtC9CCMiniSDK11CCAppleAuth")
-@interface CCAppleAuth : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class ASAuthorizationController;
-@interface CCAppleAuth (SWIFT_EXTENSION(CCMiniSDK)) <ASAuthorizationControllerPresentationContextProviding>
-- (ASPresentationAnchor _Nonnull)presentationAnchorForAuthorizationController:(ASAuthorizationController * _Nonnull)controller SWIFT_WARN_UNUSED_RESULT;
-@end
-
-@class ASAuthorization;
-@interface CCAppleAuth (SWIFT_EXTENSION(CCMiniSDK)) <ASAuthorizationControllerDelegate>
-- (void)authorizationController:(ASAuthorizationController * _Nonnull)controller didCompleteWithAuthorization:(ASAuthorization * _Nonnull)authorization;
-- (void)authorizationController:(ASAuthorizationController * _Nonnull)controller didCompleteWithError:(NSError * _Nonnull)error;
-@end
-
-SWIFT_CLASS("_TtC9CCMiniSDK29CCFirebaseAuthWithAppleSignIn") SWIFT_AVAILABILITY(ios,introduced=13.0)
-@interface CCFirebaseAuthWithAppleSignIn : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-SWIFT_CLASS("_TtC9CCMiniSDK28CCFirebaseAuthWithGameCenter")
-@interface CCFirebaseAuthWithGameCenter : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-SWIFT_CLASS("_TtC9CCMiniSDK30CCFirebaseAuthWithGoogleSignIn")
-@interface CCFirebaseAuthWithGoogleSignIn : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-/// Firebase Messaging 管理类
-SWIFT_CLASS("_TtC9CCMiniSDK19CCFirebaseMessaging")
-@interface CCFirebaseMessaging : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class FIRMessaging;
 @class NSString;
-@interface CCFirebaseMessaging (SWIFT_EXTENSION(CCMiniSDK)) <FIRMessagingDelegate>
-- (void)messaging:(FIRMessaging * _Nonnull)messaging didReceiveRegistrationToken:(NSString * _Nullable)fcmToken;
-@end
-
-@class UNUserNotificationCenter;
-@class UNNotification;
-@class UNNotificationResponse;
-@interface CCFirebaseMessaging (SWIFT_EXTENSION(CCMiniSDK)) <UNUserNotificationCenterDelegate>
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
-@end
-
-/// Game Center 管理类
-SWIFT_CLASS("_TtC9CCMiniSDK12CCGameCenter")
-@interface CCGameCenter : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class GKGameCenterViewController;
-@interface CCGameCenter (SWIFT_EXTENSION(CCMiniSDK)) <GKGameCenterControllerDelegate>
-- (void)gameCenterViewControllerDidFinish:(GKGameCenterViewController * _Nonnull)gameCenterViewController;
-@end
-
-/// 应用内购买管理类
-SWIFT_CLASS("_TtC9CCMiniSDK15CCInAppPurchase")
-@interface CCInAppPurchase : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@class SKProductsRequest;
-@class SKProductsResponse;
-@class SKRequest;
-@interface CCInAppPurchase (SWIFT_EXTENSION(CCMiniSDK)) <SKProductsRequestDelegate>
-- (void)productsRequest:(SKProductsRequest * _Nonnull)request didReceiveResponse:(SKProductsResponse * _Nonnull)response;
-- (void)request:(SKRequest * _Nonnull)request didFailWithError:(NSError * _Nonnull)error;
-@end
-
-@class SKPaymentQueue;
-@class SKPaymentTransaction;
-@interface CCInAppPurchase (SWIFT_EXTENSION(CCMiniSDK)) <SKPaymentTransactionObserver>
-- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue updatedTransactions:(NSArray<SKPaymentTransaction *> * _Nonnull)transactions;
-- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue * _Nonnull)queue;
-- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue restoreCompletedTransactionsFailedWithError:(NSError * _Nonnull)error;
-@end
-
 @class NSDictionary;
 SWIFT_CLASS_NAMED("CCMiniSDKHelper")
 @interface CCMiniSDKHelper : NSObject
@@ -931,75 +674,6 @@ SWIFT_CLASS_NAMED("CCMiniSDKHelper")
 + (void)signOutProviderAsync:(NSString * _Nonnull)providerRaw callbackId:(NSString * _Nonnull)callbackId;
 + (void)linkProviderAsync:(NSString * _Nonnull)providerRaw callbackId:(NSString * _Nonnull)callbackId;
 + (void)unlinkProviderAsync:(NSString * _Nonnull)providerRaw callbackId:(NSString * _Nonnull)callbackId;
-@end
-
-/// 推送通知管理类
-SWIFT_CLASS("_TtC9CCMiniSDK19CCPushNotifications")
-@interface CCPushNotifications : NSObject
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-+ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
-@end
-
-@interface CCPushNotifications (SWIFT_EXTENSION(CCMiniSDK)) <UNUserNotificationCenterDelegate>
-/// 应用在前台时收到通知
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center willPresentNotification:(UNNotification * _Nonnull)notification withCompletionHandler:(void (^ _Nonnull)(UNNotificationPresentationOptions))completionHandler;
-/// 用户点击通知
-- (void)userNotificationCenter:(UNUserNotificationCenter * _Nonnull)center didReceiveNotificationResponse:(UNNotificationResponse * _Nonnull)response withCompletionHandler:(void (^ _Nonnull)(void))completionHandler;
-@end
-
-/// TopOn 广告模块
-/// 支持横幅、插屏、激励视频、原生广告等多种广告形式
-SWIFT_CLASS("_TtC9CCMiniSDK10CCTopOnAds")
-@interface CCTopOnAds : NSObject
-- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
-@end
-
-@class ATBannerView;
-@interface CCTopOnAds (SWIFT_EXTENSION(CCMiniSDK)) <ATBannerDelegate>
-/// 横幅广告展示
-- (void)bannerView:(ATBannerView * _Nonnull)bannerView didShowAdWithPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 横幅广告点击
-- (void)bannerView:(ATBannerView * _Nonnull)bannerView didClickWithPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-@end
-
-@interface CCTopOnAds (SWIFT_EXTENSION(CCMiniSDK)) <ATInterstitialDelegate>
-/// 插屏广告展示
-- (void)interstitialDidShowForPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 插屏广告点击
-- (void)interstitialDidClickForPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 插屏广告关闭
-- (void)interstitialDidCloseForPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 插屏广告展示失败
-- (void)interstitialFailedToShowForPlacementID:(NSString * _Nonnull)placementID error:(NSError * _Nonnull)error extra:(NSDictionary * _Nullable)extra;
-@end
-
-@interface CCTopOnAds (SWIFT_EXTENSION(CCMiniSDK)) <ATRewardedVideoDelegate>
-/// 激励视频开始播放
-- (void)rewardedVideoDidStartPlayingForPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 激励视频播放结束
-- (void)rewardedVideoDidEndPlayingForPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 激励视频播放完成并获得奖励
-- (void)rewardedVideoDidRewardSuccessForPlacemenID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 激励视频关闭
-- (void)rewardedVideoDidCloseForPlacementID:(NSString * _Nonnull)placementID rewarded:(BOOL)rewarded extra:(NSDictionary * _Nullable)extra;
-/// 激励视频点击
-- (void)rewardedVideoDidClickForPlacementID:(NSString * _Nonnull)placementID extra:(NSDictionary * _Nullable)extra;
-/// 激励视频展示失败
-- (void)rewardedVideoDidFailToPlayForPlacementID:(NSString * _Nonnull)placementID error:(NSError * _Nonnull)error extra:(NSDictionary * _Nullable)extra;
-@end
-
-@interface CCTopOnAds (SWIFT_EXTENSION(CCMiniSDK)) <ATAdLoadingDelegate>
-/// 广告加载成功
-- (void)didFinishLoadingADWithPlacementID:(NSString * _Nonnull)placementID;
-/// 广告加载失败
-- (void)didFailToLoadADWithPlacementID:(NSString * _Nonnull)placementID error:(NSError * _Nonnull)error;
-- (void)didRevenueForPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra;
-- (void)didStartLoadingADSourceWithPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra;
-- (void)didFinishLoadingADSourceWithPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra;
-- (void)didFailToLoadADSourceWithPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra error:(NSError * _Nullable)error;
-- (void)didStartBiddingADSourceWithPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra;
-- (void)didFinishBiddingADSourceWithPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra;
-- (void)didFailBiddingADSourceWithPlacementID:(NSString * _Nullable)placementID extra:(NSDictionary * _Nullable)extra error:(NSError * _Nullable)error;
 @end
 
 #endif
