@@ -1,4 +1,11 @@
 framework module CCMiniSDK {
+  umbrella header "CCMiniSDK.h"
+  export *
+
+  module * { export * }
+}
+
+module CCMiniSDK.Swift {
   header "CCMiniSDK-Swift.h"
   requires objc
 }

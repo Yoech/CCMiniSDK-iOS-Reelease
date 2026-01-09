@@ -1,20 +1,109 @@
 // swift-interface-format-version: 1.0
 // swift-compiler-version: Apple Swift version 6.2.3 effective-5.10 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
-// swift-module-flags: -target x86_64-apple-ios13.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name CCMiniSDK
+// swift-module-flags: -target x86_64-apple-ios18.6-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name CCMiniSDK
 // swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
+import AnyThinkSDK
 import AppTrackingTransparency
 import AuthenticationServices
+@_exported import CCMiniSDK
 import CryptoKit
+import FirebaseAnalytics
+import FirebaseAuth
+import FirebaseCore
+import FirebaseCrashlytics
+import FirebaseMessaging
+import FirebasePerformance
+import FirebaseRemoteConfig
 import Foundation
 import GameKit
+import GoogleSignIn
 import LocalAuthentication
 import StoreKit
 import Swift
 import UIKit
+import UserMessagingPlatform
 import UserNotifications
 import _Concurrency
 import _StringProcessing
 import _SwiftConcurrencyShims
+public enum CCAuthProvider {
+  case none
+  case gameCenter
+  case apple
+  case google
+  public static func == (a: CCMiniSDK.CCAuthProvider, b: CCMiniSDK.CCAuthProvider) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class CCFirebaseAuth {
+  public var authProviders: [Swift.String : any CCMiniSDK.CCFirebaseAuthProviderProtocol] {
+    get
+  }
+  public func providerIdString(for provider: CCMiniSDK.CCAuthProvider) -> Swift.String
+  public func authProviderEnum(from providerId: Swift.String) -> CCMiniSDK.CCAuthProvider
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var currentUser: CCMiniSDK.CCFirebaseUser? {
+    get
+  }
+  #endif
+  public var authStateDidChangeHandler: ((CCMiniSDK.CCFirebaseUser?) -> Swift.Void)?
+  public func isAuthenticated() -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getUser() -> CCMiniSDK.CCFirebaseUser?
+  #endif
+  public func uid() -> Swift.String
+  public func displayName() -> Swift.String
+  public func photoURL() -> Swift.String
+  public func email() -> Swift.String
+  public func phoneNumber() -> Swift.String
+  public func anonymous() -> Swift.Bool
+  public func emailVerified() -> Swift.Bool
+  @objc deinit
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func signInWith(provider: CCMiniSDK.CCAuthProvider, completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  public func isLinkedProviders() -> [CCMiniSDK.CCAuthProvider]
+  public func isLinkedProvidersStr() -> [Swift.String]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func link(provider: CCMiniSDK.CCAuthProvider, completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func unlink(provider: CCMiniSDK.CCAuthProvider, completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func signOutFrom(provider: CCMiniSDK.CCAuthProvider, completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func execSignOut(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func deleteUser(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  public func registerDefaultAuthProviders()
+  public func register(provider: any CCMiniSDK.CCFirebaseAuthProviderProtocol)
+}
+@objc @_inheritsConvenienceInitializers public class CCFirebaseAuthWithGoogleSignIn : ObjectiveC.NSObject, CCMiniSDK.CCFirebaseAuthProviderProtocol {
+  final public let providerId: Swift.String
+  @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func signIn(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func reauthentication(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func link(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func unlink(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func signOut(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  @objc deinit
+}
 public struct CCAppleUser {
   public let userIdentifier: Swift.String
   public let email: Swift.String?
@@ -54,25 +143,141 @@ extension CCMiniSDK.CCAppleAuth : AuthenticationServices.ASAuthorizationControll
 extension CCMiniSDK.CCAppleAuth : AuthenticationServices.ASAuthorizationControllerPresentationContextProviding {
   @_Concurrency.MainActor @preconcurrency @objc dynamic public func presentationAnchor(for controller: AuthenticationServices.ASAuthorizationController) -> AuthenticationServices.ASPresentationAnchor
 }
-public enum CCLogLevel : Swift.String {
-  case debug
-  case info
-  case warn
-  case error
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CCPushNotifications : ObjectiveC.NSObject {
+  public var didReceiveNotificationHandler: ((UserNotifications.UNNotification) -> Swift.Void)?
+  public var didTapNotificationHandler: ((UserNotifications.UNNotificationResponse) -> Swift.Void)?
+  public var didRegisterHandler: ((Swift.String) -> Swift.Void)?
+  public var didFailToRegisterHandler: ((any Swift.Error) -> Swift.Void)?
   #if compiler(>=5.3) && $NonescapableTypes
-  public init?(rawValue: Swift.String)
+  public func requestAuthorization(completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
   #endif
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
+  public func checkAuthorizationStatus(completion: @escaping (UserNotifications.UNAuthorizationStatus) -> Swift.Void)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func scheduleLocalNotification(title: Swift.String, body: Swift.String, identifier: Swift.String = UUID().uuidString, timeInterval: Foundation.TimeInterval = 1, userInfo: [Swift.AnyHashable : Any]? = nil, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
+  #endif
+  public func cancelLocalNotification(identifier: Swift.String)
+  public func cancelAllLocalNotifications()
+  public func getPendingNotifications(completion: @escaping ([UserNotifications.UNNotificationRequest]) -> Swift.Void)
+  public func setBadgeNumber(_ number: Swift.Int)
+  public func clearBadge()
+  public func getBadgeNumber() -> Swift.Int
+  public func registerCategories(_ categories: Swift.Set<UserNotifications.UNNotificationCategory>)
+  public func createCategory(identifier: Swift.String, actions: [UserNotifications.UNNotificationAction], intentIdentifiers: [Swift.String] = [], options: UserNotifications.UNNotificationCategoryOptions = []) -> UserNotifications.UNNotificationCategory
+  public func createAction(identifier: Swift.String, title: Swift.String, options: UserNotifications.UNNotificationActionOptions = []) -> UserNotifications.UNNotificationAction
+  @objc deinit
+}
+extension CCMiniSDK.CCPushNotifications : UserNotifications.UNUserNotificationCenterDelegate {
+  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+}
+@objc @_inheritsConvenienceInitializers @available(iOS 13.0, *)
+public class CCFirebaseAuthWithAppleSignIn : ObjectiveC.NSObject, CCMiniSDK.CCFirebaseAuthProviderProtocol {
+  final public let providerId: Swift.String
+  @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func signIn(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func reauthentication(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func link(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func unlink(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func signOut(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers public class CCMiniSDK {
+  public static let shared: CCMiniSDK.CCMiniSDK
+  public var analytics: CCMiniSDK.CCFirebaseAnalytics {
     get
   }
+  public var firebaseAuth: CCMiniSDK.CCFirebaseAuth {
+    get
+  }
+  public var messaging: CCMiniSDK.CCFirebaseMessaging {
+    get
+  }
+  public var crashlytics: CCMiniSDK.CCFirebaseCrashlytics {
+    get
+  }
+  public var remoteConfig: CCMiniSDK.CCFirebaseRemoteConfig {
+    get
+  }
+  public var performance: CCMiniSDK.CCFirebasePerformance {
+    get
+  }
+  public var appleAuth: CCMiniSDK.CCAppleAuth {
+    get
+  }
+  public var pushNotifications: CCMiniSDK.CCPushNotifications {
+    get
+  }
+  public var iap: CCMiniSDK.CCInAppPurchase {
+    get
+  }
+  public var gameCenter: CCMiniSDK.CCGameCenter {
+    get
+  }
+  public var topOnAds: CCMiniSDK.CCTopOnAds {
+    get
+  }
+  public var authProviders: [Swift.String : any CCMiniSDK.CCFirebaseAuthProviderProtocol] {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func configure(with config: CCMiniSDK.CCMiniSDKConfig, application: UIKit.UIApplication, launchOptions: [UIKit.UIApplication.LaunchOptionsKey : Any]?)
+  #endif
+  public func didRegisterForRemoteNotificationsWithDeviceToken(_ deviceToken: Foundation.Data)
+  public func didReceiveRemoteNotification(_ userInfo: [Swift.AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIKit.UIBackgroundFetchResult) -> Swift.Void)
+  public func handleOpen(url: Foundation.URL, options: [UIKit.UIApplication.OpenURLOptionsKey : Any]) -> Swift.Bool
+  public func isAuthenticated() -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getUser() -> CCMiniSDK.CCFirebaseUser?
+  #endif
+  public func uid() -> Swift.String
+  public func displayName() -> Swift.String
+  public func photoURL() -> Swift.String
+  public func email() -> Swift.String
+  public func phoneNumber() -> Swift.String
+  public func anonymous() -> Swift.Bool
+  public func emailVerified() -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func signIn(provider: CCMiniSDK.CCAuthProvider, completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  public func getLinkedProviders() -> [CCMiniSDK.CCAuthProvider]
+  public func getLinkedProvidersStr() -> [Swift.String]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func link(provider: CCMiniSDK.CCAuthProvider, completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func unlink(provider: CCMiniSDK.CCAuthProvider, completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func signOut(provider: CCMiniSDK.CCAuthProvider, completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func deleteUser(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  @objc deinit
 }
-public struct CCLog {
-  public static func debug(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
-  public static func info(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
-  public static func warn(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
-  public static func error(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
-  public static func output(level: CCMiniSDK.CCLogLevel, items: [Any], separator: Swift.String = " ", terminator: Swift.String = "\n")
+@_hasMissingDesignatedInitializers public class CCFirebaseCrashlytics {
+  public func recordError(_ error: any Swift.Error)
+  public func recordError(_ error: any Swift.Error, userInfo: [Swift.String : Any])
+  public func log(_ message: Swift.String)
+  public func setUserID(_ userID: Swift.String)
+  public func setCustomValue(_ value: Any, forKey key: Swift.String)
+  public func setCustomValues(_ keysAndValues: [Swift.String : Any])
+  public func checkForUnsentReports(completion: @escaping (Swift.Bool) -> Swift.Void)
+  public func sendUnsentReports()
+  public func deleteUnsentReports()
+  public func setCrashlyticsCollectionEnabled(_ enabled: Swift.Bool)
+  public func testCrash()
+  @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CCGameCenter : ObjectiveC.NSObject {
   public var localPlayer: GameKit.GKLocalPlayer {
@@ -116,6 +321,327 @@ public struct CCLog {
 }
 extension CCMiniSDK.CCGameCenter : GameKit.GKGameCenterControllerDelegate {
   @objc dynamic public func gameCenterViewControllerDidFinish(_ gameCenterViewController: GameKit.GKGameCenterViewController)
+}
+public enum CCLogLevel : Swift.String {
+  case debug
+  case info
+  case warn
+  case error
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init?(rawValue: Swift.String)
+  #endif
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct CCLog {
+  public static func debug(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
+  public static func info(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
+  public static func warn(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
+  public static func error(_ items: Any..., separator: Swift.String = " ", terminator: Swift.String = "\n")
+  public static func output(level: CCMiniSDK.CCLogLevel, items: [Any], separator: Swift.String = " ", terminator: Swift.String = "\n")
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CCFirebaseMessaging : ObjectiveC.NSObject {
+  public var fcmTokenDidChangeHandler: ((Swift.String) -> Swift.Void)?
+  public var didReceiveMessageHandler: (([Swift.AnyHashable : Any]) -> Swift.Void)?
+  public func setupUMP(deviceIdentifiers: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getFCMToken(completion: @escaping (Swift.Result<Swift.String, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func subscribe(toTopic topic: Swift.String, completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func unsubscribe(fromTopic topic: Swift.String, completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func deleteToken(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  @objc deinit
+}
+extension CCMiniSDK.CCFirebaseMessaging : FirebaseMessaging.MessagingDelegate {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func messaging(_ messaging: FirebaseMessaging.Messaging, didReceiveRegistrationToken fcmToken: Swift.String?)
+  #endif
+}
+extension CCMiniSDK.CCFirebaseMessaging : UserNotifications.UNUserNotificationCenterDelegate {
+  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
+  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
+}
+@_inheritsConvenienceInitializers @objcMembers @objc(CCMiniSDKHelper) public class CCMiniSDKHelper : ObjectiveC.NSObject {
+  @objc public static func isAuthenticated() -> Swift.Bool
+  @objc public static func uid() -> Swift.String
+  @objc public static func displayName() -> Swift.String
+  @objc public static func photoURL() -> Swift.String
+  @objc public static func email() -> Swift.String
+  @objc public static func phoneNumber() -> Swift.String
+  @objc public static func anonymous() -> Swift.Bool
+  @objc public static func emailVerified() -> Swift.Bool
+  @objc public static func signInProvider(_ providerRaw: Swift.String) -> Swift.Bool
+  @objc public static func getLinkedProvidersStr() -> [Swift.String]
+  @objc public static func getUserDict() -> Foundation.NSDictionary
+  @objc public static func linkProvider(_ providerRaw: Swift.String) -> Swift.Bool
+  @objc public static func unlinkProvider(_ providerRaw: Swift.String) -> Swift.Bool
+  @objc public static func signOutProvider(_ providerRaw: Swift.String) -> Swift.Bool
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension CCMiniSDK.CCMiniSDKHelper {
+  @objc public static func signInProviderAsync(_ providerRaw: Swift.String, callbackId: Swift.String)
+  @objc public static func signOutProviderAsync(_ providerRaw: Swift.String, callbackId: Swift.String)
+  @objc public static func linkProviderAsync(_ providerRaw: Swift.String, callbackId: Swift.String)
+  @objc public static func unlinkProviderAsync(_ providerRaw: Swift.String, callbackId: Swift.String)
+}
+@_hasMissingDesignatedInitializers public class CCFirebaseRemoteConfig {
+  public func setDefaults(_ defaults: [Swift.String : ObjectiveC.NSObject])
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func fetchConfig(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func fetchAndActivateConfig(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  public func getString(key: Swift.String) -> Swift.String
+  public func getInt(key: Swift.String) -> Swift.Int
+  public func getBool(key: Swift.String) -> Swift.Bool
+  public func getDouble(key: Swift.String) -> Swift.Double
+  public func getData(key: Swift.String) -> Foundation.Data
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getJSON(key: Swift.String) -> [Swift.String : Any]?
+  #endif
+  public func getAllKeys() -> Swift.Set<Swift.String>
+  public func setFetchInterval(_ interval: Foundation.TimeInterval)
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class CCFirebaseAuthWithGameCenter : ObjectiveC.NSObject, CCMiniSDK.CCFirebaseAuthProviderProtocol {
+  final public let providerId: Swift.String
+  @objc override dynamic public init()
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func signIn(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func reauthentication(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func link(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func unlink(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func signOut(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers public class CCTopOnAds : ObjectiveC.NSObject {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func initialize(appID: Swift.String, appKey: Swift.String, debug: Swift.Bool = false, completion: ((Swift.Bool, (any Swift.Error)?) -> Swift.Void)? = nil)
+  #endif
+  public func showBanner(placementID: Swift.String, in viewController: UIKit.UIViewController, position: CCMiniSDK.CCTopOnAds.BannerPosition = .bottom)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func loadBanner(placementID: Swift.String, in viewController: UIKit.UIViewController, position: CCMiniSDK.CCTopOnAds.BannerPosition = .bottom, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func loadInterstitial(placementID: Swift.String, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func showInterstitial(placementID: Swift.String, in viewController: UIKit.UIViewController, scene: Swift.String? = nil)
+  #endif
+  public func isInterstitialReady(placementID: Swift.String) -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func loadRewardedVideo(placementID: Swift.String, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func showRewardedVideo(placementID: Swift.String, in viewController: UIKit.UIViewController, scene: Swift.String? = nil, completion: @escaping (Swift.Bool) -> Swift.Void)
+  #endif
+  public func isRewardedVideoReady(placementID: Swift.String) -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func loadNativeAd(placementID: Swift.String, completion: @escaping (Swift.Result<UIKit.UIView, any Swift.Error>) -> Swift.Void)
+  #endif
+  public enum BannerPosition {
+    case top
+    case bottom
+    public static func == (a: CCMiniSDK.CCTopOnAds.BannerPosition, b: CCMiniSDK.CCTopOnAds.BannerPosition) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public func setGDPRLevel(_ level: CCMiniSDK.CCTopOnAds.GDPRLevel)
+  public enum GDPRLevel {
+    case personalized
+    case nonPersonalized
+    case unknown
+    public static func == (a: CCMiniSDK.CCTopOnAds.GDPRLevel, b: CCMiniSDK.CCTopOnAds.GDPRLevel) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public func getPlacementStatus(placementID: Swift.String) -> [Swift.String : Any]
+  public func clearCache(placementID: Swift.String)
+  @objc override dynamic public init()
+  @objc deinit
+}
+extension CCMiniSDK.CCTopOnAds : AnyThinkSDK.ATAdLoadingDelegate {
+  @objc dynamic public func didFinishLoadingAD(withPlacementID placementID: Swift.String)
+  @objc dynamic public func didFailToLoadAD(withPlacementID placementID: Swift.String, error: any Swift.Error)
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func didRevenue(forPlacementID placementID: Swift.String?, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func didStartLoadingADSource(withPlacementID placementID: Swift.String?, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func didFinishLoadingADSource(withPlacementID placementID: Swift.String?, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func didFailToLoadADSource(withPlacementID placementID: Swift.String?, extra: [Swift.AnyHashable : Any]?, error: (any Swift.Error)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func didStartBiddingADSource(withPlacementID placementID: Swift.String?, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func didFinishBiddingADSource(withPlacementID placementID: Swift.String?, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func didFailBiddingADSource(withPlacementID placementID: Swift.String?, extra: [Swift.AnyHashable : Any]?, error: (any Swift.Error)?)
+  #endif
+}
+extension CCMiniSDK.CCTopOnAds : AnyThinkSDK.ATInterstitialDelegate {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func interstitialDidShow(forPlacementID placementID: Swift.String, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func interstitialDidClick(forPlacementID placementID: Swift.String, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func interstitialDidClose(forPlacementID placementID: Swift.String, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func interstitialFailedToShow(forPlacementID placementID: Swift.String, error: any Swift.Error, extra: [Swift.AnyHashable : Any]?)
+  #endif
+}
+extension CCMiniSDK.CCTopOnAds : AnyThinkSDK.ATRewardedVideoDelegate {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func rewardedVideoDidStartPlaying(forPlacementID placementID: Swift.String, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func rewardedVideoDidEndPlaying(forPlacementID placementID: Swift.String, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func rewardedVideoDidShow(forPlacementID placementID: Swift.String, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func rewardedVideoDidRewardSuccess(forPlacemenID placementID: Swift.String, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func rewardedVideoDidClose(forPlacementID placementID: Swift.String, rewarded: Swift.Bool, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func rewardedVideoDidClick(forPlacementID placementID: Swift.String, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func rewardedVideoDidFailToPlay(forPlacementID placementID: Swift.String, error: any Swift.Error, extra: [Swift.AnyHashable : Any]?)
+  #endif
+}
+extension CCMiniSDK.CCTopOnAds : AnyThinkSDK.ATBannerDelegate {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func bannerView(_ bannerView: AnyThinkSDK.ATBannerView, didShowAdWithPlacementID placementID: Swift.String, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc dynamic public func bannerView(_ bannerView: AnyThinkSDK.ATBannerView, didClickWithPlacementID placementID: Swift.String, extra: [Swift.AnyHashable : Any]?)
+  #endif
+  public func bannerView(_ bannerView: AnyThinkSDK.ATBannerView, didLoadFail placementID: Swift.String, error: any Swift.Error)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func bannerView(_ bannerView: AnyThinkSDK.ATBannerView, didCloseFullScreenAdWithPlacementID placementID: Swift.String, extra: [Swift.AnyHashable : Any]?)
+  #endif
+}
+public struct CCFirebaseUser {
+  public let uid: Swift.String
+  public let email: Swift.String?
+  public let displayName: Swift.String?
+  public let photoURL: Foundation.URL?
+  public let phoneNumber: Swift.String?
+  public let isEmailVerified: Swift.Bool
+  public let isAnonymous: Swift.Bool
+  public let authorizationCode: Foundation.Data?
+}
+extension CCMiniSDK.CCFirebaseUser {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(firebaseUser: FirebaseAuth.User, authorizationCode: Foundation.Data? = nil)
+  #endif
+  public func toDict() -> Foundation.NSDictionary
+}
+@_hasMissingDesignatedInitializers public class CCFirebaseAnalytics {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func logEvent(name: Swift.String, parameters: [Swift.String : Any]? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func setUserID(_ userID: Swift.String?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func setUserProperty(_ name: Swift.String, value: Swift.String?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func setScreenName(_ screenName: Swift.String, screenClass: Swift.String? = nil)
+  #endif
+  public func logAppOpen()
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func logLevelEnd(level: Swift.Int, success: Swift.Bool, score: Swift.Int? = nil)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func logPurchase(transactionID: Swift.String, value: Swift.Double, currency: Swift.String, items: [[Swift.String : Any]]? = nil)
+  #endif
+  public func setAnalyticsCollectionEnabled(_ enabled: Swift.Bool)
+  public func resetAnalyticsData()
+  @objc deinit
+}
+public class CCMiniSDKConfig {
+  public var testDeviceIndentifiers: Swift.String
+  public var enableFirebaseAnalytics: Swift.Bool
+  public var enableFirebaseAuth: Swift.Bool
+  public var enableFirebaseMessaging: Swift.Bool
+  public var enableCrashlytics: Swift.Bool
+  public var enableRemoteConfig: Swift.Bool
+  public var enablePerformance: Swift.Bool
+  public var enableAppleAuth: Swift.Bool
+  public var enablePushNotifications: Swift.Bool
+  public var enableApplePay: Swift.Bool
+  public var enableIAP: Swift.Bool
+  public var enableICloud: Swift.Bool
+  public var enableGameCenter: Swift.Bool
+  public var enableTopOnAds: Swift.Bool
+  public var topOnAppID: Swift.String?
+  public var topOnAppKey: Swift.String?
+  public var topOnDebugMode: Swift.Bool
+  public var remoteConfigFetchInterval: Swift.Double
+  public var enableDebugLog: Swift.Bool
+  public var iCloudContainerIdentifier: Swift.String?
+  public var gameCenterLeaderboardIDs: [Swift.String]
+  public var gameCenterAchievementIDs: [Swift.String]
+  public var applePayMerchantID: Swift.String?
+  public var applePaySupportedNetworks: [Swift.String]
+  public init()
+  @objc deinit
+}
+public protocol CCFirebaseAuthProviderProtocol : AnyObject {
+  var providerId: Swift.String { get }
+  #if compiler(>=5.3) && $NonescapableTypes
+  func signIn(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func signOut(completion: @escaping ((any Swift.Error)?) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func reauthentication(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func link(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func unlink(completion: @escaping (Swift.Result<CCMiniSDK.CCFirebaseUser, any Swift.Error>) -> Swift.Void)
+  #endif
 }
 public struct CCProduct {
   public let productIdentifier: Swift.String
@@ -174,127 +700,38 @@ extension CCMiniSDK.CCInAppPurchase : StoreKit.SKPaymentTransactionObserver {
   @objc dynamic public func paymentQueueRestoreCompletedTransactionsFinished(_ queue: StoreKit.SKPaymentQueue)
   @objc dynamic public func paymentQueue(_ queue: StoreKit.SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: any Swift.Error)
 }
-public struct CCFirebaseUser {
-  public let uid: Swift.String
-  public let email: Swift.String?
-  public let displayName: Swift.String?
-  public let photoURL: Foundation.URL?
-  public let phoneNumber: Swift.String?
-  public let isEmailVerified: Swift.Bool
-  public let isAnonymous: Swift.Bool
-  public let authorizationCode: Foundation.Data?
-}
-public class CCMiniSDKConfig {
-  public var testDeviceIndentifiers: Swift.String
-  public var enableFirebaseAnalytics: Swift.Bool
-  public var enableFirebaseAuth: Swift.Bool
-  public var enableFirebaseMessaging: Swift.Bool
-  public var enableCrashlytics: Swift.Bool
-  public var enableRemoteConfig: Swift.Bool
-  public var enablePerformance: Swift.Bool
-  public var enableAppleAuth: Swift.Bool
-  public var enablePushNotifications: Swift.Bool
-  public var enableApplePay: Swift.Bool
-  public var enableIAP: Swift.Bool
-  public var enableICloud: Swift.Bool
-  public var enableGameCenter: Swift.Bool
-  public var enableTopOnAds: Swift.Bool
-  public var topOnAppID: Swift.String?
-  public var topOnAppKey: Swift.String?
-  public var topOnDebugMode: Swift.Bool
-  public var remoteConfigFetchInterval: Swift.Double
-  public var enableDebugLog: Swift.Bool
-  public var iCloudContainerIdentifier: Swift.String?
-  public var gameCenterLeaderboardIDs: [Swift.String]
-  public var gameCenterAchievementIDs: [Swift.String]
-  public var applePayMerchantID: Swift.String?
-  public var applePaySupportedNetworks: [Swift.String]
-  public init()
+@_hasMissingDesignatedInitializers public class CCPerformanceTrace {
+  public func start()
+  public func stop()
+  public func setMetric(_ metricName: Swift.String, value: Swift.Int64)
+  public func incrementMetric(_ metricName: Swift.String, by value: Swift.Int64)
+  public func setAttribute(_ attributeName: Swift.String, value: Swift.String)
   @objc deinit
 }
-@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class CCPushNotifications : ObjectiveC.NSObject {
-  public var didReceiveNotificationHandler: ((UserNotifications.UNNotification) -> Swift.Void)?
-  public var didTapNotificationHandler: ((UserNotifications.UNNotificationResponse) -> Swift.Void)?
-  public var didRegisterHandler: ((Swift.String) -> Swift.Void)?
-  public var didFailToRegisterHandler: ((any Swift.Error) -> Swift.Void)?
+@_hasMissingDesignatedInitializers public class CCFirebasePerformance {
+  public func setPerformanceCollectionEnabled(_ enabled: Swift.Bool)
+  public func setInstrumentationEnabled(_ enabled: Swift.Bool)
+  public func startTrace(name: Swift.String) -> CCMiniSDK.CCPerformanceTrace
+  public func stopTrace(name: Swift.String)
+  public func measure(name: Swift.String, block: () -> Swift.Void)
+  public func measureAsync(name: Swift.String, asyncBlock: @escaping (@escaping () -> Swift.Void) -> Swift.Void)
   #if compiler(>=5.3) && $NonescapableTypes
-  public func requestAuthorization(completion: @escaping (Swift.Bool, (any Swift.Error)?) -> Swift.Void)
+  public func createHTTPMetric(url: Foundation.URL, httpMethod: Swift.String) -> FirebasePerformance.HTTPMetric?
   #endif
-  public func checkAuthorizationStatus(completion: @escaping (UserNotifications.UNAuthorizationStatus) -> Swift.Void)
-  #if compiler(>=5.3) && $NonescapableTypes
-  public func scheduleLocalNotification(title: Swift.String, body: Swift.String, identifier: Swift.String = UUID().uuidString, timeInterval: Foundation.TimeInterval = 1, userInfo: [Swift.AnyHashable : Any]? = nil, completion: (((any Swift.Error)?) -> Swift.Void)? = nil)
-  #endif
-  public func cancelLocalNotification(identifier: Swift.String)
-  public func cancelAllLocalNotifications()
-  public func getPendingNotifications(completion: @escaping ([UserNotifications.UNNotificationRequest]) -> Swift.Void)
-  public func setBadgeNumber(_ number: Swift.Int)
-  public func clearBadge()
-  public func getBadgeNumber() -> Swift.Int
-  public func registerCategories(_ categories: Swift.Set<UserNotifications.UNNotificationCategory>)
-  public func createCategory(identifier: Swift.String, actions: [UserNotifications.UNNotificationAction], intentIdentifiers: [Swift.String] = [], options: UserNotifications.UNNotificationCategoryOptions = []) -> UserNotifications.UNNotificationCategory
-  public func createAction(identifier: Swift.String, title: Swift.String, options: UserNotifications.UNNotificationActionOptions = []) -> UserNotifications.UNNotificationAction
+  public func recordScreenLoadTime(screenName: Swift.String, loadTime: Swift.Int64)
+  public func recordAPICall(apiName: Swift.String, duration: Swift.Int64, success: Swift.Bool)
+  public func recordLevelLoadTime(level: Swift.Int, loadTime: Swift.Int64)
+  public func recordDatabaseQuery(queryName: Swift.String, duration: Swift.Int64, resultCount: Swift.Int)
   @objc deinit
 }
-extension CCMiniSDK.CCPushNotifications : UserNotifications.UNUserNotificationCenterDelegate {
-  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, willPresent notification: UserNotifications.UNNotification, withCompletionHandler completionHandler: @escaping (UserNotifications.UNNotificationPresentationOptions) -> Swift.Void)
-  @objc dynamic public func userNotificationCenter(_ center: UserNotifications.UNUserNotificationCenter, didReceive response: UserNotifications.UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void)
-}
-@objc @_inheritsConvenienceInitializers public class CCTopOnAds : ObjectiveC.NSObject {
-  #if compiler(>=5.3) && $NonescapableTypes
-  public func initialize(appID: Swift.String, appKey: Swift.String, debug: Swift.Bool = false, completion: ((Swift.Bool, (any Swift.Error)?) -> Swift.Void)? = nil)
-  #endif
-  public func showBanner(placementID: Swift.String, in viewController: UIKit.UIViewController, position: CCMiniSDK.CCTopOnAds.BannerPosition = .bottom)
-  #if compiler(>=5.3) && $NonescapableTypes
-  public func loadBanner(placementID: Swift.String, in viewController: UIKit.UIViewController, position: CCMiniSDK.CCTopOnAds.BannerPosition = .bottom, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
-  public func loadInterstitial(placementID: Swift.String, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
-  public func showInterstitial(placementID: Swift.String, in viewController: UIKit.UIViewController, scene: Swift.String? = nil)
-  #endif
-  public func isInterstitialReady(placementID: Swift.String) -> Swift.Bool
-  #if compiler(>=5.3) && $NonescapableTypes
-  public func loadRewardedVideo(placementID: Swift.String, completion: @escaping (Swift.Result<Swift.Void, any Swift.Error>) -> Swift.Void)
-  #endif
-  #if compiler(>=5.3) && $NonescapableTypes
-  public func showRewardedVideo(placementID: Swift.String, in viewController: UIKit.UIViewController, scene: Swift.String? = nil, completion: @escaping (Swift.Bool) -> Swift.Void)
-  #endif
-  public func isRewardedVideoReady(placementID: Swift.String) -> Swift.Bool
-  #if compiler(>=5.3) && $NonescapableTypes
-  public func loadNativeAd(placementID: Swift.String, completion: @escaping (Swift.Result<UIKit.UIView, any Swift.Error>) -> Swift.Void)
-  #endif
-  public enum BannerPosition {
-    case top
-    case bottom
-    public static func == (a: CCMiniSDK.CCTopOnAds.BannerPosition, b: CCMiniSDK.CCTopOnAds.BannerPosition) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public func setGDPRLevel(_ level: CCMiniSDK.CCTopOnAds.GDPRLevel)
-  public enum GDPRLevel {
-    case personalized
-    case nonPersonalized
-    case unknown
-    public static func == (a: CCMiniSDK.CCTopOnAds.GDPRLevel, b: CCMiniSDK.CCTopOnAds.GDPRLevel) -> Swift.Bool
-    public func hash(into hasher: inout Swift.Hasher)
-    public var hashValue: Swift.Int {
-      get
-    }
-  }
-  public func getPlacementStatus(placementID: Swift.String) -> [Swift.String : Any]
-  public func clearCache(placementID: Swift.String)
-  @objc override dynamic public init()
-  @objc deinit
-}
+extension CCMiniSDK.CCAuthProvider : Swift.Equatable {}
+extension CCMiniSDK.CCAuthProvider : Swift.Hashable {}
 extension CCMiniSDK.CCLogLevel : Swift.Equatable {}
 extension CCMiniSDK.CCLogLevel : Swift.Hashable {}
 extension CCMiniSDK.CCLogLevel : Swift.RawRepresentable {}
-extension CCMiniSDK.CCTransactionState : Swift.Equatable {}
-extension CCMiniSDK.CCTransactionState : Swift.Hashable {}
 extension CCMiniSDK.CCTopOnAds.BannerPosition : Swift.Equatable {}
 extension CCMiniSDK.CCTopOnAds.BannerPosition : Swift.Hashable {}
 extension CCMiniSDK.CCTopOnAds.GDPRLevel : Swift.Equatable {}
 extension CCMiniSDK.CCTopOnAds.GDPRLevel : Swift.Hashable {}
+extension CCMiniSDK.CCTransactionState : Swift.Equatable {}
+extension CCMiniSDK.CCTransactionState : Swift.Hashable {}
