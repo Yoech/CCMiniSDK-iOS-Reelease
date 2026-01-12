@@ -309,6 +309,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @class NSDictionary;
 SWIFT_CLASS_NAMED("CCMiniSDKHelper")
 @interface CCMiniSDKHelper : NSObject
+/// Convenience configure with explicit parameters to be provided by the host app (Objective-C callable)
++ (void)configureWithTopOnEnabled:(BOOL)topOnEnabled topOnAppID:(NSString * _Nullable)topOnAppID topOnAppKey:(NSString * _Nullable)topOnAppKey testDeviceIdentifiers:(NSString * _Nullable)testDeviceIdentifiers enableDebugLog:(BOOL)enableDebugLog;
 + (BOOL)isAuthenticated SWIFT_WARN_UNUSED_RESULT;
 + (NSString * _Nonnull)uid SWIFT_WARN_UNUSED_RESULT;
 + (NSString * _Nonnull)displayName SWIFT_WARN_UNUSED_RESULT;
@@ -652,6 +654,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @class NSDictionary;
 SWIFT_CLASS_NAMED("CCMiniSDKHelper")
 @interface CCMiniSDKHelper : NSObject
+/// Convenience configure with explicit parameters to be provided by the host app (Objective-C callable)
++ (void)configureWithTopOnEnabled:(BOOL)topOnEnabled topOnAppID:(NSString * _Nullable)topOnAppID topOnAppKey:(NSString * _Nullable)topOnAppKey testDeviceIdentifiers:(NSString * _Nullable)testDeviceIdentifiers enableDebugLog:(BOOL)enableDebugLog;
 + (BOOL)isAuthenticated SWIFT_WARN_UNUSED_RESULT;
 + (NSString * _Nonnull)uid SWIFT_WARN_UNUSED_RESULT;
 + (NSString * _Nonnull)displayName SWIFT_WARN_UNUSED_RESULT;

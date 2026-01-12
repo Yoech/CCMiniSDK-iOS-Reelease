@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'CCMiniSDK'
-  s.version          = '1.0.0109.03'
+  s.version          = '1.0.0112.01'
   s.summary          = 'A comprehensive iOS SDK integrating Firebase and Apple services'
   s.description      = <<-DESC
     CCMiniSDK is a modular iOS SDK that provides easy integration with:
@@ -13,9 +13,9 @@ Pod::Spec.new do |s|
   s.homepage         = 'https://github.com/Yoech/CCMiniSDK-iOS-Release'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'CCMiniSDK' => 'mowen@126.com' }
-  s.source          = { :git => 'https://github.com/Yoech/CCMiniSDK-iOS-Release.git', :tag => '1.0.0109.03' }
+  s.source          = { :git => 'https://github.com/Yoech/CCMiniSDK-iOS-Release.git', :tag => '1.0.0112.01' }
   
-  s.ios.deployment_target = '13.0'
+  s.ios.deployment_target = '15.0'
   s.swift_version = '5.0'
   s.requires_arc = true
   s.public_header_files = 'CCMiniSDK/CCMiniSDK/Classes/**/*.h'

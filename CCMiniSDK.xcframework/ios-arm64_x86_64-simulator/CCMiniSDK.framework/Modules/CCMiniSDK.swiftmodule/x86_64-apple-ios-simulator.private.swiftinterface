@@ -105,6 +105,9 @@ public struct CCLog {
   public static func output(level: CCMiniSDK.CCLogLevel, items: [Any], separator: Swift.String = " ", terminator: Swift.String = "\n")
 }
 @_inheritsConvenienceInitializers @objcMembers @objc(CCMiniSDKHelper) public class CCMiniSDKHelper : ObjectiveC.NSObject {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @objc public static func configure(topOnEnabled: Swift.Bool, topOnAppID: Swift.String?, topOnAppKey: Swift.String?, testDeviceIdentifiers: Swift.String?, enableDebugLog: Swift.Bool)
+  #endif
   @objc public static func isAuthenticated() -> Swift.Bool
   @objc public static func uid() -> Swift.String
   @objc public static func displayName() -> Swift.String

@@ -2364,6 +2364,84 @@
         "children": [
           {
             "kind": "Function",
+            "name": "configure",
+            "printedName": "configure(topOnEnabled:topOnAppID:topOnAppKey:testDeviceIdentifiers:enableDebugLog:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.String?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "c:@M@CCMiniSDK@objc(cs)CCMiniSDKHelper(cm)configureWithTopOnEnabled:topOnAppID:topOnAppKey:testDeviceIdentifiers:enableDebugLog:",
+            "mangledName": "$s9CCMiniSDK0A9SDKHelperC9configure12topOnEnabled0eF5AppID0efH3Key21testDeviceIdentifiers14enableDebugLogySb_SSSgA2JSbtFZ",
+            "moduleName": "CCMiniSDK",
+            "static": true,
+            "declAttributes": [
+              "Final",
+              "AccessControl",
+              "RawDocComment",
+              "ObjC"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "isAuthenticated",
             "printedName": "isAuthenticated()",
             "children": [
@@ -6764,14 +6842,14 @@
     {
       "filePath": "\/Users\/cool.cat\/Developer\/CCMiniSDK_iOS\/CCMiniSDK\/Classes\/Firebase\/CCFirebaseAuthWithAppleSignIn.swift",
       "kind": "StringLiteral",
-      "offset": 225,
+      "offset": 217,
       "length": 11,
       "value": "\"apple.com\""
     },
     {
       "filePath": "\/Users\/cool.cat\/Developer\/CCMiniSDK_iOS\/CCMiniSDK\/Classes\/Firebase\/CCFirebaseAuthWithAppleSignIn.swift",
       "kind": "IntegerLiteral",
-      "offset": 11175,
+      "offset": 10425,
       "length": 2,
       "value": "32"
     },
@@ -6932,14 +7010,14 @@
     {
       "filePath": "\/Users\/cool.cat\/Developer\/CCMiniSDK_iOS\/CCMiniSDK\/Classes\/CCMiniSDKHelper.swift",
       "kind": "Dictionary",
-      "offset": 3873,
+      "offset": 5372,
       "length": 3,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/cool.cat\/Developer\/CCMiniSDK_iOS\/CCMiniSDK\/Classes\/CCMiniSDKHelper.swift",
       "kind": "StringLiteral",
-      "offset": 3941,
+      "offset": 5440,
       "length": 30,
       "value": "\"ccminisdk.asyncResults.queue\""
     },
