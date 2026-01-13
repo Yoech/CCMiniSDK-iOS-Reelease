@@ -355,11 +355,15 @@
 		</data>
 		<key>Headers/CCMiniSDK.h</key>
 		<data>
-		b7AIsy34Za7md69taORE3us9+Ek=
+		DC7ncUHBnVv0EY6zzExaqBQ+5jg=
 		</data>
 		<key>Headers/CCMiniSDKBridge.h</key>
 		<data>
 		FKEGZhV4JaAtnOAodIyaGoxBaSw=
+		</data>
+		<key>Headers/CCMiniSDKHelperBridge.h</key>
+		<data>
+		Oq0ToJyap5jR7rtN/6NJKXarOrc=
 		</data>
 		<key>Info.plist</key>
 		<data>
@@ -1449,7 +1453,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			pItXDWfSKHR4K/N0SgsSGZucpEaaojNRBmXUQ629Qj0=
+			cYnZeV/yJhStfR24eTAtDTsR9qm9bAG6ZQL4K8FWseI=
 			</data>
 		</dict>
 		<key>Headers/CCMiniSDKBridge.h</key>
@@ -1457,6 +1461,13 @@
 			<key>hash2</key>
 			<data>
 			dJy2AJoNaOj+nqqSYk2rnb1bXZozFPiORm5KOKFkEdk=
+			</data>
+		</dict>
+		<key>Headers/CCMiniSDKHelperBridge.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			gxOfSQWrSt5rREsWHpeIZTUFiDd5eXonjsvdMFQEtqg=
 			</data>
 		</dict>
 		<key>MTGSDK.bundle/Info.plist</key>
