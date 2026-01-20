@@ -10,7 +10,7 @@
 //#import <UserNotifications/UserNotifications.h>
 //#import <AuthenticationServices/AuthenticationServices.h>
 #import <CCMiniSDK/CCMiniSDKBridge.h>
-#import <CCMiniSDK/CCMiniSDKHelperBridge.h>
+#import <CCMiniSDK/CCLog.h>
 
 //! Project version number for CCMiniSDK.
 FOUNDATION_EXPORT double CCMiniSDKVersionNumber;

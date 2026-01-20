@@ -6,7 +6,7 @@
 	<dict>
 		<key>AdsGlobalSDK.bundle/Info.plist</key>
 		<data>
-		yata/yhI04l2Esv/nbmAh4oALZQ=
+		IvGqqgBtWFxxt63uSaCEPlO2eDI=
 		</data>
 		<key>AdsGlobalSDK.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -343,19 +343,19 @@
 		</data>
 		<key>GoogleMobileAdsResources.bundle/Info.plist</key>
 		<data>
-		1pLlZXKlhPJddqOrMUNcrxOpZ8M=
+		h1OZHq4FueKyO8nQYLdDbAOlU8Q=
 		</data>
 		<key>GoogleMobileAdsResources.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
 		VWCA3MeaiPMoOAS1uOteTSLX8js=
 		</data>
-		<key>Headers/CCMiniSDK-Swift.h</key>
+		<key>Headers/CCLog.h</key>
 		<data>
-		RKN5e4BTQzIYJlk49Q9VS4T1KJU=
+		F2ynLG6Z2OdwZb94qhpK9vKQb6s=
 		</data>
 		<key>Headers/CCMiniSDK.h</key>
 		<data>
-		DC7ncUHBnVv0EY6zzExaqBQ+5jg=
+		srVqR8Fly7pTnuW7t4K1gY5Su0w=
 		</data>
 		<key>Headers/CCMiniSDKBridge.h</key>
 		<data>
@@ -369,6 +369,22 @@
 		<data>
 		0ouxiupToKygnW/RgV1lN4b65tc=
 		</data>
+		<key>IronSourceAdQualityPrivacyInfo.bundle/Info.plist</key>
+		<data>
+		R66aFBhM/HTF9WQYrnn8H9AtmqU=
+		</data>
+		<key>IronSourceAdQualityPrivacyInfo.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		l2ZduCvSJbNtPnHg+4cAbLgDbyQ=
+		</data>
+		<key>IronSourcePrivacyInfo.bundle/Info.plist</key>
+		<data>
+		wlm+gMCcdguAbetnZDoJrhtZ6n4=
+		</data>
+		<key>IronSourcePrivacyInfo.bundle/PrivacyInfo.xcprivacy</key>
+		<data>
+		BLNjR6VVI/K82v3iQCE5o0YXgGI=
+		</data>
 		<key>MTGSDK.bundle/Info.plist</key>
 		<data>
 		XVu4FlOHZqMW1oFF78hTI0/MHAM=
@@ -377,49 +393,9 @@
 		<data>
 		7pb/tiRb/KGE5KXo5P2+XBbJDLs=
 		</data>
-		<key>Modules/CCMiniSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
-		<data>
-		JpimlTmKwDomMIZXMhh++Yf+YqQ=
-		</data>
-		<key>Modules/CCMiniSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
-		<data>
-		Do/naSpG6jvBQ4x2Mwt66ylwdTQ=
-		</data>
-		<key>Modules/CCMiniSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
-		<data>
-		JWjKudAthIapHh4yLpi/EfZZTzo=
-		</data>
-		<key>Modules/CCMiniSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
-		<data>
-		Do/naSpG6jvBQ4x2Mwt66ylwdTQ=
-		</data>
-		<key>Modules/CCMiniSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
-		<data>
-		Ewl67Ar4PAoENguG7gTxuru+k/c=
-		</data>
-		<key>Modules/CCMiniSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
-		<data>
-		JpimlTmKwDomMIZXMhh++Yf+YqQ=
-		</data>
-		<key>Modules/CCMiniSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
-		<data>
-		K0SxphKQwo9icjyakg4xfC+0TUw=
-		</data>
-		<key>Modules/CCMiniSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
-		<data>
-		HZW7hXN7Yu/RHKMCbOzbhsDE1ig=
-		</data>
-		<key>Modules/CCMiniSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
-		<data>
-		K0SxphKQwo9icjyakg4xfC+0TUw=
-		</data>
-		<key>Modules/CCMiniSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
-		<data>
-		srZQQ8N5SdbArFLByUA7tx6CKA0=
-		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		YZEWkEz9qllRG9oqGkSaCE6nCR0=
+		Gyv6sR2Lw/2Tdfsb8r4TwuN78v0=
 		</data>
 		<key>PAGAdSDK.bundle/400001562.json</key>
 		<data>
@@ -475,7 +451,7 @@
 		</data>
 		<key>PAGAdSDK.bundle/Info.plist</key>
 		<data>
-		7OGmG5LtFhiHfxGX0F/wNRgKdPQ=
+		uNXTB10Deu+9qTcM94WfbxC721w=
 		</data>
 		<key>PAGAdSDK.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -487,7 +463,7 @@
 		</data>
 		<key>PAGAdSDK.bundle/version.txt</key>
 		<data>
-		LkkoNeAO4EU8DJOG1i7SytLhnn0=
+		QcGtUW69Rwhjk/MdwMpN46dip/8=
 		</data>
 		<key>SmartdigimktSDK.bundle/RedPacket.png</key>
 		<data>
@@ -812,7 +788,7 @@
 		</dict>
 		<key>TikTokBusinessSDK.bundle/Info.plist</key>
 		<data>
-		rbKW0OjcEqytVDvUg2VG+Dgib+k=
+		mXO/YaVt5KugoPSR7f3R8zgGwZA=
 		</data>
 		<key>TikTokBusinessSDK.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -820,7 +796,7 @@
 		</data>
 		<key>UnityAdsResources.bundle/Info.plist</key>
 		<data>
-		2BA0bPR8SqqTCfoZpzxw/MR4gSM=
+		TzNEzZ+Yj7E8U+L14/9+inOSnfg=
 		</data>
 		<key>UnityAdsResources.bundle/PrivacyInfo.xcprivacy</key>
 		<data>
@@ -849,7 +825,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ftiYpBfnfV9onToi1ZhrD09I02XOpxB9IOb+l/2Auqs=
+			oxoVJtXfMRJ+uDpFQya9GwDSktragPs1Poc0r9XETBY=
 			</data>
 		</dict>
 		<key>AdsGlobalSDK.bundle/PrivacyInfo.xcprivacy</key>
@@ -1432,7 +1408,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			xCms06pJQ5ZgRhp3XuJMNf5/hNwuDN/NbRxoHe4GHio=
+			08L+LiUUzH0iQ598pMWD6H4ifu5JzxBVDbGSGoGj7Ns=
 			</data>
 		</dict>
 		<key>GoogleMobileAdsResources.bundle/PrivacyInfo.xcprivacy</key>
@@ -1442,18 +1418,18 @@
 			afsRJYL8I/wGxjXJYdJio/e0tWVNKEeHSR3jAA2t+dI=
 			</data>
 		</dict>
-		<key>Headers/CCMiniSDK-Swift.h</key>
+		<key>Headers/CCLog.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			iUJ25lUCepQIWpFlfou2GHw9B/yAyeVRg02SFEL3f3k=
+			bCSDRU1E58NHD7a/L9SvamWaYXL/rmr/WuiFtnM9p9Y=
 			</data>
 		</dict>
 		<key>Headers/CCMiniSDK.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			cYnZeV/yJhStfR24eTAtDTsR9qm9bAG6ZQL4K8FWseI=
+			d4rXc+5C4RqAhF7lXom7xX3oJrdV2u1/ps2+vsnX3ac=
 			</data>
 		</dict>
 		<key>Headers/CCMiniSDKBridge.h</key>
@@ -1470,6 +1446,34 @@
 			gxOfSQWrSt5rREsWHpeIZTUFiDd5eXonjsvdMFQEtqg=
 			</data>
 		</dict>
+		<key>IronSourceAdQualityPrivacyInfo.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			pGdo1Yuvxn0Q5FNsWTKY3f5j2vyGRrJyYUUegCJnrh4=
+			</data>
+		</dict>
+		<key>IronSourceAdQualityPrivacyInfo.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			r2z7AqVxBGjN8OndNxmPkrvnp5Bc0eybVPrs5UKShZ8=
+			</data>
+		</dict>
+		<key>IronSourcePrivacyInfo.bundle/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			hF9/zUca4TUUfGhJExYM3JQJVwASUkgeHUTOg38lqrY=
+			</data>
+		</dict>
+		<key>IronSourcePrivacyInfo.bundle/PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ES/wHPURrhqoWqlouH6JyVI5Y7FKY1pgaWMpkbPGo0E=
+			</data>
+		</dict>
 		<key>MTGSDK.bundle/Info.plist</key>
 		<dict>
 			<key>hash2</key>
@@ -1484,81 +1488,11 @@
 			NBdLMoqFX7Ov/mII2GrezPd6ClAP70i6z2JRWl/xxEg=
 			</data>
 		</dict>
-		<key>Modules/CCMiniSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			0WlOCUDp7ciupOPlNMsrzvIA3NkSlb0SSvlfJ4aM4Xk=
-			</data>
-		</dict>
-		<key>Modules/CCMiniSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Y559mTUILVTYB53BIelcbUPxj/9fspxmX6+C4Gcnui4=
-			</data>
-		</dict>
-		<key>Modules/CCMiniSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			dcIrct1cZGfwe5q0FuAes3EHYBmQ6fPBrjthH2XiHMM=
-			</data>
-		</dict>
-		<key>Modules/CCMiniSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Y559mTUILVTYB53BIelcbUPxj/9fspxmX6+C4Gcnui4=
-			</data>
-		</dict>
-		<key>Modules/CCMiniSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			nyZ4Opda8mL+b2RfAa9swzPGM+4r1OqrhaceXtKiFWg=
-			</data>
-		</dict>
-		<key>Modules/CCMiniSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			0WlOCUDp7ciupOPlNMsrzvIA3NkSlb0SSvlfJ4aM4Xk=
-			</data>
-		</dict>
-		<key>Modules/CCMiniSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			LYAsr6+/3fcq+r2NGCIttlqD8xcg5fnU6y5t3QS95/I=
-			</data>
-		</dict>
-		<key>Modules/CCMiniSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			OqNiInYMS0D/IPuDJOylGi4PhbjuXjo5gv6RVNuAY2g=
-			</data>
-		</dict>
-		<key>Modules/CCMiniSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			LYAsr6+/3fcq+r2NGCIttlqD8xcg5fnU6y5t3QS95/I=
-			</data>
-		</dict>
-		<key>Modules/CCMiniSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
-		<dict>
-			<key>hash2</key>
-			<data>
-			Tm9/Z1iT7IxhPPxYdAmGwaiZLQjr1FNQYF6mm3srAOM=
-			</data>
-		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			dAiY/+ueEjh3P/JuPsfzj0gu67oUtmQl5fnz2Gbm0O0=
+			Ckrnfrp0yRt7T6n81q2Kfhobjc/XCANx416hK+qMY9k=
 			</data>
 		</dict>
 		<key>PAGAdSDK.bundle/400001562.json</key>
@@ -1656,7 +1590,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			eP7Tjavjmuu8jOufCFMr7UXrbUxowwZrLe8lp0nGpYo=
+			4rNQ9FGUzUTIOXGrt3tN7g98i/2kSGYeNnJWVRQj+bo=
 			</data>
 		</dict>
 		<key>PAGAdSDK.bundle/PrivacyInfo.xcprivacy</key>
@@ -1677,7 +1611,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			e3aUFRJMnYwNyVPy1P6xggfKgJs8uJhfhvXwKE83MJM=
+			buunrTiGpl3O8AGGyR+dRjIcCqT5whn+ntiTRRHdrAM=
 			</data>
 		</dict>
 		<key>SmartdigimktSDK.bundle/RedPacket.png</key>
@@ -2239,7 +2173,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			21/QZQuZ0gE8+PCeQIRzrxrQ50uAD2qUsx2CBGrPM1M=
+			4D/Whbz68GDhCrr0j5LIPD8TgEjl6mNVDpdbS5Wqzwg=
 			</data>
 		</dict>
 		<key>TikTokBusinessSDK.bundle/PrivacyInfo.xcprivacy</key>
@@ -2253,7 +2187,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			6SULIZlo2irEDpQsEWhjVDY0UuYNOqDeefML7K1lspc=
+			iwoTitEfUmdYZXAEHmDEbGkcs73NEte6FUF0v8kCxws=
 			</data>
 		</dict>
 		<key>UnityAdsResources.bundle/PrivacyInfo.xcprivacy</key>

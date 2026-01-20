@@ -4,8 +4,3 @@ framework module CCMiniSDK {
 
   module * { export * }
 }
-
-module CCMiniSDK.Swift {
-  header "CCMiniSDK-Swift.h"
-  requires objc
-}
