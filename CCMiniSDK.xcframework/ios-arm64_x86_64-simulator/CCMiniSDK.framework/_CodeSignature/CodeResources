@@ -349,13 +349,17 @@
 		<data>
 		VWCA3MeaiPMoOAS1uOteTSLX8js=
 		</data>
+		<key>Headers/CCDevice.h</key>
+		<data>
+		nXn4xZ25rirS1wuMTXb+KsmS5jY=
+		</data>
 		<key>Headers/CCLog.h</key>
 		<data>
 		F2ynLG6Z2OdwZb94qhpK9vKQb6s=
 		</data>
 		<key>Headers/CCMiniSDK.h</key>
 		<data>
-		srVqR8Fly7pTnuW7t4K1gY5Su0w=
+		ckYWzaj8slZpLtkgTKW+E284N0k=
 		</data>
 		<key>Headers/CCMiniSDKBridge.h</key>
 		<data>
@@ -1418,6 +1422,13 @@
 			afsRJYL8I/wGxjXJYdJio/e0tWVNKEeHSR3jAA2t+dI=
 			</data>
 		</dict>
+		<key>Headers/CCDevice.h</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			iq3meRV4L/yklWN5MADHlaRjIAX3uf/wblu9xfbsojE=
+			</data>
+		</dict>
 		<key>Headers/CCLog.h</key>
 		<dict>
 			<key>hash2</key>
@@ -1429,7 +1440,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			d4rXc+5C4RqAhF7lXom7xX3oJrdV2u1/ps2+vsnX3ac=
+			aqpHtAd93E6Dykl4HH5V+LaZNeZfmpySNXE++9oH/d0=
 			</data>
 		</dict>
 		<key>Headers/CCMiniSDKBridge.h</key>
